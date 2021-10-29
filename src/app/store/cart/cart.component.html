@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="space-around start" fxLayoutGap=1rem
+  fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch">
+  <ng-container *ngIf="cart.cartItems.value.length > 0; else elseTemplate">
+    <mat-card fxFlex=70>
+      <mat-card-header>
+        <mat-card-title>Shopping Cart</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="column">
+          <span fxFlexAlign=end>Price</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div *ngFor="let item of cart.cartItems| async">
+          <app-cart-item  [item]=item></app-cart-item>
+          <mat-divider></mat-divider>
+        </div>
+        <div fxLayout="column" style="margin-top: 1rem;">
+          <div fxFlexAlign=end>
+            <span>Total ({{(cart.cartTotal | async)?.quantity}} Items): {{(cart.cartTotal | async)?.price | currency}}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex=auto>
+      <mat-card-header>
+        <mat-card-title>Check Out</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-checkout (checkout)="checkout($event)"></app-checkout>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #elseTemplate>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <span>Your cart is empty..</span>
+      <div><a mat-button routerLink="/store">Continue shopping</a></div>
+    </div>
+    
+  </ng-template>
+  
+  
+</div>

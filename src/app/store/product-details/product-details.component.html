@@ -1,0 +1,15 @@
+<ng-container *ngIf="(product | async) as value; else elseTemplate">
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
+    <h3>{{value.name}}</h3>
+    <img [src]="value.url">
+    <h4>{{value.price |currency}}</h4>
+    <p>{{value.description}}</p>
+    <app-add-to-cart (addToCart)="addToCart(value, $event)"></app-add-to-cart>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
+    <mat-icon color=warn>warning</mat-icon>
+    <h4>Invalid Product</h4>
+  </div>
+</ng-template>

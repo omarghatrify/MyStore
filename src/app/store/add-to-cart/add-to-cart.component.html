@@ -1,0 +1,8 @@
+<form #addCartForm="ngForm" fxLayout="row" fxLayoutAlign="center center" (ngSubmit)="add();">
+  <mat-form-field style="width: 75px;" color=primary>
+    <button type="button" color=accent matPrefix mat-icon-button (click)="quantity>1?quantity = quantity - 1:null"><mat-icon>remove</mat-icon></button>
+    <button type="button" color=accent matSuffix mat-icon-button (click)="quantity = quantity + 1"><mat-icon>add</mat-icon></button>
+    <input matInput  type="number" required [(ngModel)]="quantity" name="quantity" min=0>
+  </mat-form-field>
+  <button mat-button color=accent type="submit">Add to Cart</button>
+</form>

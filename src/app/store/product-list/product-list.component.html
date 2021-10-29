@@ -1,0 +1,13 @@
+<div fxLayout="row wrap" fxLayoutGap="1rem grid" fxLayoutAlign="start center">
+  <app-product-card
+  fxFlex.gt-lg="25%"
+  fxFlex.lg="33.333%"
+  fxFlex.md="50%"
+  fxFlex.sm="50%"
+  fxFlex.lt-sm="100%"
+  *ngFor="let product of (productsList | async)"
+  [product]=product
+  (addCart)="addToCart($event)"
+  >
+  </app-product-card>
+</div>
