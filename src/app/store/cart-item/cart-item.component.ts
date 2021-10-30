@@ -17,8 +17,10 @@ export class CartItemComponent implements OnInit{
     this.quantity = this.item.quantity;
   }
 
-  changeQuantity() {
-    this.cart.setQuantity(this.item.product, this.quantity);
+  changeQuantity(quantity: number) {
+    if ( quantity !- this.quantity) {
+      this.cart.setQuantity(this.item.product, quantity);
+    }
   }
 
   remove() {
